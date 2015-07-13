@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title><%= site_name %></title>
+	  <%= stylesheet_link_tag    'public', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'public', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%= render :partial => 'shared/flash' %>
+		<div class="wrap">
+			<%= yield %>
+		</div>
+	</body>
+</html>

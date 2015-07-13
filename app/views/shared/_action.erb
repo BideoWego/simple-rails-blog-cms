@@ -1,0 +1,20 @@
+<div class="action <%= action %>">
+	<h2><%=  capitalized = "#{action.capitalize} #{resource_name.capitalize}" %></h2>
+	<%
+	url = {}
+	url[:controller] = params[:controller]
+	url[:action] = (action == 'delete') ? 'destroy' : action
+	url[:id] = resource.id if action != 'create'
+	%>
+	<% if action == 'delete' %>
+		<p>Delete <%= "#{resource_name}: [#{resource_identifier}]"%>?</p>
+	<% end %>
+	<%= form_for(resource_name.to_sym, :url => url) do |f| %>
+		<% if action != 'delete' %>
+			<%= render :partial => params[:controller] + '/form', :locals => {:f => f} %>
+		<% end %>
+		<div class="form-submit">
+			<%= submit_tag(capitalized) %>
+		</div>
+	<% end %>
+</div>

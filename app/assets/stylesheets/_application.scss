@@ -1,0 +1,176 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+@import 'reset/reset';
+@import 'reset/normalize';
+
+$primary: #6fa8dc;
+$secondary: darken($primary, 30%);
+$ternary: lighten($primary, 5%);
+$dark: #333;
+$light: #eee;
+$notice: #73FF56;
+$alert: #FF3E41;
+
+h1 {
+	font-size: 3em;
+}
+h2 {
+	font-size: 2.5em;
+}
+h3 {
+	font-size: 2.25em;
+}
+h4 {
+	font-size: 2em;
+}
+h5 {
+	font-size: 1.75em;
+}
+h6 {
+	font-size: 1.5em;
+}
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+@mixin clearfix() {
+	@extend .clearfix;
+}
+
+html,
+body {
+	color: $dark;
+}
+a:visited {
+	color: $secondary;
+}
+a {
+	color: $primary;
+}
+a:hover {
+	color: $ternary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $primary;
+}
+
+.wrap {
+	max-width: 960px;
+	margin: 2em auto;
+}
+
+.wrap h1 {
+	text-align: center;
+	padding: 1em;
+}
+
+@mixin message() {
+	position: fixed;
+	top: 0;
+	text-align: center;
+	color: $light;
+	width: 100%;
+	padding-top: 1em;
+	height: 2em;
+	border-bottom: 4px solid $light;
+	background: $dark;
+}
+.notice {
+	@include message;
+	border-color: $notice;
+}
+.alert {
+	@include message;
+	border-color: $alert;
+}
+
+@mixin btn() {
+	display: inline-block;
+	border-radius: 4px;
+	border: none;
+	outline: none;
+	padding: 8px;
+	text-align: center;
+}
+@mixin btn-primary() {
+	@include btn;
+	color: $light;
+	background: $primary;
+}
+.btn {
+	@include btn;
+}
+.btn-primary {
+	@include btn-primary;
+}
+
+textarea,
+input[type="text"],
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="number"],
+input[type="range"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[type="password"] {
+	width: 100%;
+	padding-top: 8px;
+	padding-bottom:8px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 4px;
+	border: 1px solid $dark;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="color"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="range"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+input[type="password"]:focus {
+	outline: none;
+	border: 1px solid $primary;
+}
+
+.form-submit {
+	@extend .clearfix;
+}
+input[type="submit"] {
+	@include btn-primary;
+	float: right;
+}

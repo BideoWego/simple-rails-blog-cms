@@ -1,0 +1,45 @@
+<div class="comments">
+	<h3 class="comment-title">Comments</h3>
+
+	<div class="comment-form">
+		<%= form_for(:comment, :url => {:controller => 'comment', :action => 'create'}) do |f| %>
+			<h6 class="leave-comment">Leave comment</h6>
+			<%
+			inputs = [
+				{
+					:h => nil,
+					:d => f.hidden_field(:public, {:value => true})
+				},
+				{
+					:h => nil,
+					:d => f.hidden_field(:post_id, {:value => post.id})
+				},
+				{
+					:h => nil,
+					:d => f.text_area(:content)
+				}
+			]
+			%>
+			<%= render :partial => 'shared/form', :locals => {:object => Comment.new, :inputs => inputs } %>
+			<div class="form-submit">
+				<%= submit_tag('Submit Comment') %>
+			</div>
+		<% end %>
+	</div>
+
+	<% if comments.count > 0 %>
+		<% comments.each do |j| %>
+			<h6 class="comment-date">On <%= j.created_at.strftime("%A %B 5d, %Y") %></h6>
+			<h6 class="comment-author"><%= (j.author) ? j.author.name[:full] : Author.guest.name[:full] %> said: </h6>
+			<div class="comment">
+				<p>
+					<%= j.content %>
+				</p>
+			</div>
+		<% end %>
+	<% else %>
+		<div class="no-comments">
+			No comments yet! Be the first!
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,13 @@
+<div class="index">
+	<h2>Comments</h2>
+	<% if @posts.count > 0 %>
+		<%= render :partial => 'access/add' %>
+		<% if @comments %>
+			<%= render :partial => 'table' %>
+		<% else %>
+			<p>No comments yet</p>
+		<% end %>
+	<% else %>
+		<%= render :partial => 'no_posts' %>
+	<% end %>
+</div>

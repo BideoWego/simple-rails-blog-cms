@@ -1,0 +1,10 @@
+<div class="index">
+	<h2>Posts</h2>
+	<%= render :partial => 'access/add' %>
+
+	<% if @posts %>
+		<%= render :partial => 'table' %>
+	<% else %>
+		<p>No posts yet</p>
+	<% end %>
+</div>

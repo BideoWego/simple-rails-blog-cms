@@ -1,0 +1,29 @@
+<table>
+	<tr>
+		<%
+		[
+			'Author',
+			'Title',
+			'Actions'
+		].each do |i|
+		%>
+			<th>
+				<%= i %>
+			</th>
+		<% end %>
+	</tr>
+	<% @posts.each do |i| %>
+		<tr>
+			<td>
+				<%= i.author.name[:full] %>
+			</td>
+			<td>
+				<%= i.title %>
+			</td>
+			<td>
+				<%= link_to("Edit", {:action => 'edit', :id => i.id}) %>
+				<%= link_to("Delete", {:action => 'delete', :id => i.id}) %>
+			</td>
+		</tr>
+	<% end %>
+</table>

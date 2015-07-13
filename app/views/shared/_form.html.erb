@@ -1,0 +1,19 @@
+<%= error_messages_for(object) %>
+<table>
+	<%
+	inputs.each do |i|
+	%>
+		<tr>
+			<% if i[:h] %>
+				<th>
+					<%= i[:h] %>
+				</th>
+			<% end %>
+			<% if i[:d] %>
+				<td>
+					<%= i[:d] %>
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>

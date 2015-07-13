@@ -1,0 +1,49 @@
+// comment.scss
+
+.comments {
+	margin-top: 2em;
+}
+
+.comments table,
+.comments tbody,
+.comments tr {
+	width: 100%;
+}
+.comments .form-submit,
+.comments textarea {
+	max-width: 256px;
+	display: block;
+	margin-left: $margin-comment-form;
+}
+
+.comment-title {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.leave-comment,
+.comment-date,
+.comment-author {
+	margin-left: $margin-comment-meta;
+	font-size: 1em;
+}
+
+.comment p:before,
+.comment p:after {
+	font-size: 1.5em;
+	content: '"';
+}
+
+.no-comments,
+.comment {
+	margin-top: 16px;
+	margin-bottom: 16px;
+	margin-left: $margin-comment;
+}
+
+.comment-form {
+	margin-bottom: 2em;
+}
+
+.form-submit {
+	margin: 8px;
+}

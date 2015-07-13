@@ -1,0 +1,33 @@
+<table>
+	<tr>
+		<%
+		[
+			'Author',
+			'Post',
+			'Excerpt',
+			'Actions'
+		].each do |i|
+		%>
+			<th>
+				<%= i %>
+			</th>
+		<% end %>
+	</tr>
+	<% @comments.each do |i| %>
+		<tr>
+			<td>
+				<%= (i.author) ? i.author.name[:full] : Author.guest.name[:full] %>
+			</td>
+			<td>
+				<%= i.post.title %>
+			</td>
+			<td>
+				<%= i.excerpt %>
+			</td>
+			<td>
+				<%= link_to("Edit", {:action => 'edit', :id => i.id}) %>
+				<%= link_to("Delete", {:action => 'delete', :id => i.id}) %>
+			</td>
+		</tr>
+	<% end %>
+</table>

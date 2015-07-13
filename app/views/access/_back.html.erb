@@ -1,0 +1,12 @@
+<% if session[:user_id] %>
+	<div class="back">
+		<%
+		actions = ['edit', 'update', 'delete', 'destroy', 'new', 'create']
+		%>
+		<% if params[:controller].to_s != 'access' && ! actions.include?(params[:action]) %>
+			&lArr; <%= link_to("Dashboard", {:controller => 'access', :action => 'index'}) %>
+		<% elsif actions.include?(params[:action]) %>
+			&lArr; <%= link_to("Back to " + params[:controller].pluralize(2), {:controller => params[:controller], :action => 'index'}) %>
+		<% end %>
+	</div>
+<% end %>

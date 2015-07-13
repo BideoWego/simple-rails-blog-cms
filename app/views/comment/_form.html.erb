@@ -1,0 +1,17 @@
+<% if @posts.count > 0 %>
+	<%
+	inputs = [
+		{
+			:h => f.label(:post),
+			:d => f.select(:post_id, @posts.map {|i| [i.title, i.id]})
+		},
+		{
+			:h => f.label(:content),
+			:d => f.text_area(:content)
+		}
+	]
+	%>
+	<%= render :partial => 'shared/form', :locals => {:object => @comment, :inputs => inputs } %>
+<% else %>
+	<%= render :partial => 'no_posts' %>
+<% end %>

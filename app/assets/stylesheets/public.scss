@@ -1,0 +1,26 @@
+// Place all the styles related to the Public controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//=require_self
+
+@import 'application';
+
+$margin-post-title: 0;
+$margin-post-meta: $margin-post-title + 32px;
+$margin-post-content: $margin-post-meta + 8px;
+
+$margin-comment-title: $margin-post-title + 16px;
+$margin-leave-comment: $margin-comment-title + 32px;
+$margin-comment-meta: $margin-leave-comment;
+$margin-comment-form: $margin-leave-comment + 16px;
+$margin-comment: $margin-comment-meta + 32px;
+
+$margin-sidebar-title: $margin-post-title;
+$margin-sidebar-year: $margin-sidebar-title + 8px;
+$margin-sidebar-list-item: $margin-sidebar-year + 16px;
+
+@import 'frontend/common';
+@import 'frontend/comment';
+@import 'frontend/post';
+@import 'frontend/sidebar';

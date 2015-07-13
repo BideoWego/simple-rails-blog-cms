@@ -1,0 +1,6 @@
+<%= render :partial => 'shared/action', :locals => {
+	:resource_name => 'author',
+	:resource_identifier => @author.name[:full],
+	:resource => @author,
+	:action => 'delete'
+}%>

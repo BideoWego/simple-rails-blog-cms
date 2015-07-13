@@ -1,0 +1,54 @@
+// post.scss
+
+.post {
+	padding: 1em;
+	margin-bottom: 4em;
+}
+.post-date {
+	padding-top: 8px;
+}
+.post-title,
+.post-date,
+.post-author {
+	padding-bottom: 4px;
+}
+
+.post-date,
+.post-author {
+	margin-left: $margin-post-meta;
+}
+
+.post .content p {
+	text-indent: 2em;
+	line-height: 1.25em;
+	margin-bottom: 8px;
+}
+
+.post .content,
+.post .excerpt {
+	margin-top: 32px;
+	max-width: 128px * 3.75;
+	margin-left: $margin-post-content;
+}
+
+@media only screen and (max-width: 767px) {
+	.post .content p {
+		max-width: 75%;
+	}
+}
+
+.read-more:before {
+	content: "[\2001"
+}
+.read-more:after {
+	content: "]\2001"
+}
+.read-more {
+	font-size: 1.15em;
+	color: $primary;
+	margin-top: 16px;
+	float: right;
+}
+.read-more a {
+	text-decoration: underline;
+}

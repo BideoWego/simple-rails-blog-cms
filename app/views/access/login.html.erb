@@ -1,0 +1,32 @@
+<div class="login">
+	<h1>Login</h1>
+	<%= form_tag(:action => 'do_login') do %>
+		<table>
+			<%
+			[
+				{
+					:label => label_tag(:username),
+					:input => text_field_tag(:username)
+				},
+				{
+					:label => label_tag(:password),
+					:input => password_field_tag(:password)
+				},
+				{
+					:label => '',
+					:input => submit_tag("Login")
+				}
+			].each do |i|
+			%>
+				<tr>
+					<td>
+						<%= i[:label] %>
+					</td>
+					<td>
+						<%= i[:input] %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+</div>

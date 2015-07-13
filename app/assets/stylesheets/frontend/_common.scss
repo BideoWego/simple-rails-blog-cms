@@ -1,0 +1,60 @@
+// common.scss
+
+.content {
+	@extend .clearfix;
+	width: 100%;
+}
+
+.posts,
+.sidebar {
+	float: left;
+}
+
+.posts {
+	width: 75%;
+}
+.sidebar {
+	width: 25%;
+}
+
+@media only screen and (max-width: 767px) {
+	.posts,
+	.sidebar {
+		float: none;
+	}
+	.posts {
+		width: calc(100% - 4em);
+	}
+	.sidebar {
+		width: calc(100% - 4em);
+	}
+}
+
+.post-date,
+.post-author,
+.leave-comment,
+.comment-date,
+.comment-author {
+	color: $dark;
+	text-decoration: underline;
+	font-size: 1em;
+}
+
+.post .content,
+.post .comments {
+	display: none;
+}
+
+.post:target .excerpt {
+	display: none;
+}
+.post:target .content,
+.post:target .comments {
+	display: block;
+}
+
+footer {
+	@extend .clearfix;
+	padding: 1em;
+	text-align: center;
+}

@@ -1,0 +1,29 @@
+<%
+inputs = [
+	{
+		:h => f.label(:first),
+		:d => f.text_field(:first)
+	},
+	{
+		:h => f.label(:last),
+		:d => f.text_field(:last)
+	},
+	{
+		:h => f.label(:email),
+		:d => f.text_field(:email)
+	},
+	{
+		:h => f.label(:username),
+		:d => f.text_field(:username)
+	},
+	{
+		:h => f.label(:password),
+		:d => f.text_field(:password)
+	},
+	{
+		:h => f.label(:password_confirmation),
+		:d => f.text_field(:password_confirmation)
+	}
+]
+%>
+<%= render :partial => 'shared/form', :locals => {:object => @author, :inputs => inputs } %>

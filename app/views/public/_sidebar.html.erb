@@ -1,0 +1,37 @@
+<section class="sidebar">
+	<h3 class="sidebar-title">Recent Posts</h3>
+	<% if @posts.count > 0 %>
+		<% max_year = @posts.maximum('created_at').strftime("%Y") %>
+		<h4 class="sidebar-year">
+			<%= max_year %>
+		</h4>
+		<ul>
+		<% @posts.each do |i| %>
+			<% year = i.created_at.strftime("%Y") %>
+			<% start_new_year = max_year.to_i > year.to_i %>
+			<% if start_new_year %>
+				</ul>
+				<h4 class="sidebar-year">
+					<%= max_year = year %>
+				</h4>
+				<ul>
+			<% end %>
+			<li>
+				<%
+				max_length = 12
+				if i.title.length < max_length
+					length = i.title.length
+					ending = ''
+				else
+					length = max_length
+					ending = '...'
+				end
+				%>
+				<%= link_to(i.title[0..length] + ending, "#post-#{i.id}") %>
+			</li>
+		<% end %>
+		</ul>
+	<% else %>
+		<p>No posts yet</p>
+	<% end %>
+</section>

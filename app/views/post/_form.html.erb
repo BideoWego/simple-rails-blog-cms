@@ -1,0 +1,14 @@
+<%
+inputs = [
+	{
+		:h => f.label(:title),
+		:d => f.text_field(:title)
+	},
+	{
+		:h => f.label(:content),
+		:d => f.text_area(:content, :id => 'post-content')
+	}
+]
+%>
+<%= render :partial => 'shared/form', :locals => {:object => @post, :inputs => inputs } %>
+<script>tinymce.init({selector:'#post-content'});</script>

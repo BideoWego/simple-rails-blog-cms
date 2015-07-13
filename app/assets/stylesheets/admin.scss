@@ -1,0 +1,63 @@
+//=require_self
+
+@import 'application';
+@import 'backend/access';
+@import 'backend/author';
+@import 'backend/comment';
+@import 'backend/post';
+
+.menu li {
+	padding: 1em;
+}
+
+.login form {
+	max-width: 256px;
+	margin: 0 auto;
+}
+.logout {
+	float: right;
+}
+
+.action h2,
+.index h2 {
+	padding: 1em;
+	text-align: center;
+}
+.action table,
+.action tbody,
+.action tr,
+.index table,
+.index tbody,
+.index tr {
+	width: 100%;
+}
+.action th {
+	width: 10%;
+}
+.action td {
+	width: 90%;
+}
+.action table,
+.index table {
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+.index table th,
+.index table td {
+	padding: 8px;
+}
+.index table th,
+.index table td {
+	border: 1px solid $dark;
+}
+.index table th {
+	border-bottom: 2px solid $dark;
+}
+
+.back {
+	margin-top: 1em;
+}
+
+.add-button a {
+	@include btn-primary;
+}
