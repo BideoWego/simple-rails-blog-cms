@@ -1,0 +1,81 @@
+<script>
+	// Set selector
+	var selector = "<%= selector %>";
+
+	// Create a new plugin class
+	tinymce.create('tinymce.plugins.BideoWegoCodeBlocks', {
+	    init : function(editor, url) {
+	        // Register an bwcodeblocks button
+	        editor.addButton('bwcodeblocks', {
+	            text : '</>',
+	            onclick : function() {
+	            	var node = editor.selection.getNode();
+	            	var textContent = '[' + node.textContent.replace(/\s/g, '&nbsp;') + ']';
+	            	var blank = '[&nbsp;]';
+	            	console.log(textContent);
+	            	if (
+	            		(node.nodeName == 'P' && node.parentNode.nodeName == 'BODY' && textContent == blank) ||
+	            		(node.nodeName == 'PRE' && node.getAttribute('class').match(/prettyprint/))
+	            		) {
+	            		var html = node.innerHTML;
+		            	var value = HtmlEntities.decode(html);
+		                 editor.windowManager.open({
+			                title: 'Code',
+			                body: [
+			                    {type: 'textbox', name: 'code', label: 'Code', minHeight: 600, minWidth: 800, size: 50, multiline: true, value: value}
+			                ],
+			                onsubmit: function(e) {
+			                    // Insert content when the window form is submitted
+			                    var code = HtmlEntities.encode(e.data.code);
+
+			                    if (code.length > 0) {
+			                    	var parentTagName = editor.selection.getNode().parentNode.tagName.toLowerCase();
+				                    var node = editor.selection.getNode().parentNode;
+				                    if (parentTagName == 'div') {
+				                    	node.childNodes[0].innerHTML = code;
+				                    } else if (parentTagName == 'body') {
+				                    	var content = '<p>&nbsp;</p><div><pre class="prettyprint linenums">' + code + '</pre></div><p>&nbsp;</p>';
+				                    	editor.insertContent(content);
+				                    }
+			                    }
+			                }
+			            });
+	            	} else {
+	            		tinyMCE.activeEditor.windowManager.alert('Error: cannot insert code into element with existing content.');
+	            	}
+	            }
+	        });
+	    }
+	});
+
+	// Register plugin with a short name
+	tinymce.PluginManager.add('bwcodeblocks', tinymce.plugins.BideoWegoCodeBlocks);
+
+	var plugins = [
+		"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+		"searchreplace wordcount visualblocks visualchars code fullscreen",
+		"insertdatetime media nonbreaking save table contextmenu directionality",
+		"emoticons template paste textcolor colorpicker textpattern imagetools -bwcodeblocks"
+	];
+
+	var toolbar1 = "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image";
+    var toolbar2 = "print preview media | forecolor backcolor emoticons | bwcodeblocks ";
+
+    var contentCss = [
+	    '/assets/tinymce.css?t=' + new Date().getTime(),
+	    'https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian'
+    ];
+
+	tinymce.init({
+		theme: 'modern',
+		height: 128 * 3,
+		image_advtab: true,
+		selector: selector,
+		plugins: plugins,
+		preformatted: true,
+		entity_encoding: 'raw',
+		content_css: contentCss,
+		toolbar1: toolbar1,
+		toolbar2: toolbar2
+	});
+</script>
