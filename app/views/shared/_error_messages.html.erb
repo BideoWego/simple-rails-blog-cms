@@ -1,9 +1,9 @@
 <% if object.errors.size > 0 %>
 	<div class="errors">
-		<h2><%= pluralize(object.errors.size, 'error') %></h2>
-		<ul>
+		<h2 class="errors-title"><%= 'Error'.pluralize %>:</h2>
+		<ul class="errors-list">
 			<% object.errors.full_messages.each do |i| %>
-				<li>
+				<li class="errors-description">
 					<%= i %>
 				</li>
 			<% end %>
