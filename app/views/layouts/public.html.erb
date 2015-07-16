@@ -1,0 +1,19 @@
+<% content_for :title do %>
+	<%= site_name %>
+<% end %>
+
+<% content_for :styles do %>
+	<%= stylesheet_link_tag 'public', media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
+
+<% content_for :scripts do %>
+	<%= javascript_include_tag 'public', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sons-of-obsidian&callback=indent', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+<% end %>
+
+<% content_for :content do %>
+	<%= yield %>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
