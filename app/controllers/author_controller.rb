@@ -29,10 +29,8 @@ class AuthorController < BackendController
     @author = Author.find(params[:id])
     if @author.update_attributes(params_filter)
       flash[:notice] = 'Author updated'
-      redirect_to(:action => 'index')
-    else
-      render('edit')
     end
+    render('edit')
   end
 
   def destroy

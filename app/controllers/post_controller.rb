@@ -30,10 +30,8 @@ class PostController < BackendController
     @post = Post.find(params[:id])
     if @post.update_attributes(params_filter)
       flash[:notice] = 'Post updated'
-      redirect_to(:action => 'index')
-    else
-      render('edit')
     end
+    render('edit')
   end
 
   def destroy

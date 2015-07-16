@@ -45,10 +45,8 @@ class CommentController < BackendController
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(params_filter)
       flash[:notice] = 'Comment updated'
-      redirect_to(:action => 'index')
-    else
-      render('edit')
     end
+    render('edit')
   end
 
   def destroy
