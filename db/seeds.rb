@@ -41,21 +41,18 @@ Author.create({
 Post.create({
 	:author_id => '1',
 	:title => 'Code Post',
-	:content => '<p>Here is a post with code in it. Made pretty with Google Prettyprint.</p><p>&nbsp;</p>
+	:content => '<p>Here is a post with code in it. Made pretty with Google Prettyprint.</p>
+<p>&nbsp;</p>
 <div>
-<pre class="prettyprint linenums">if@thirsty
-have_a_beverage()
-puts"Mmmtastybeverage."
+<pre class="prettyprint linenums">if @thirsty
+ have_a_beverage()
+ puts "Mmm tasty beverage."
 else
-relax()
-puts"I\'dgetupbut...why?"
+ relax()
+ puts "I\'d get up but... why?"
 end</pre>
 </div>
-<p>&nbsp;&nbsp;</p>
-<div>
-<pre class="prettyprint linenums">&lt;brdata-mce-bogus="1"&gt;</pre>
-</div>
-<p>&nbsp;</p>'
+<p>&nbsp;&nbsp;</p>'
 })
 
 Post.create({

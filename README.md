@@ -12,6 +12,7 @@ Working features:
 * display most recent posts
 * navigate posts by year
 * comment on posts as guest
+* code snippets in posts with syntax highlighting
 
 Installation requires PostgreSQL with the current config. However, this can be changed to simply use SQLite3 in the `/config/database.yml` file
 
