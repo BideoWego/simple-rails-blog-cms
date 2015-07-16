@@ -12,12 +12,20 @@ class Author < ActiveRecord::Base
 							:uniqueness => true
 	validates :email, 		:presence => true,
 							:length => {:maximum => 100},
-							:format => EMAIL_REGEX
+							:format => EMAIL_REGEX,
+							:uniqueness => true
+	after_destroy :destroy_relationships
+
 	def name
 		{:first => first, :last => last, :full => "#{first} #{last}", :last_first => "#{last} #{first}"}
 	end
 
 	def self.guest
 		create(:first => 'Guest', :last => 'User', :email => 'guest@user.com', :username => 'guest', :password => 'password')
+	end
+
+	def destroy_relationships
+		posts.destroy_all
+		comments.destroy_all
 	end
 end

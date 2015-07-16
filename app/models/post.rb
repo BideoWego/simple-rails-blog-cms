@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
 	has_many :comments
 	validates :title, :presence => true
 	validates :content, :presence => true
-	after_destroy :destroy_comments
+	after_destroy :destroy_relationships
 
 	scope :recent, lambda {order('posts.created_at DESC')}
 
@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
 		content.truncate_words(25)
 	end
 
-	def destroy_comments
+	def destroy_relationships
 		comments.destroy_all
 	end
 end
