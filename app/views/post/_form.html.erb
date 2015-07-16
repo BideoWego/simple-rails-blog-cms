@@ -11,4 +11,5 @@ inputs = [
 ]
 %>
 <%= render :partial => 'shared/form', :locals => {:object => @post, :inputs => inputs } %>
-<script>tinymce.init({selector:'#post-content'});</script>
+
+<%= render :partial => 'tinymce', :locals => {:selector => "#post-content" } %>

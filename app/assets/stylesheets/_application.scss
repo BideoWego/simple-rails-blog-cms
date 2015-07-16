@@ -51,6 +51,34 @@ h6 {
 	@extend .clearfix;
 }
 
+@mixin icon() {
+	&:before {
+		display: inline-block;
+		border-radius: 0.125em;
+		width: 2em;
+		height: 2em;
+		line-height: 2em;
+		text-align: center;
+	}
+}
+@mixin check() {
+	@include icon;
+	&:before {
+		color: $notice;
+		border: 1px solid $notice;
+		content: "\2714";
+	}
+}
+@mixin x() {
+	@include icon;
+	&:before {
+		@include icon;
+		color: $alert;
+		border: 1px solid $alert;
+		content: "\2716";
+	}
+}
+
 html,
 body {
 	color: $dark;
@@ -87,10 +115,10 @@ h6 {
 @mixin message() {
 	position: fixed;
 	top: 0;
-	text-align: center;
 	color: $light;
 	width: 100%;
 	padding-top: 1em;
+	padding-bottom: 1em;
 	height: 2em;
 	border-bottom: 4px solid $light;
 	background: $dark;
@@ -102,6 +130,41 @@ h6 {
 .alert {
 	@include message;
 	border-color: $alert;
+}
+.notice .message,
+.alert .message {
+	text-align: center;
+}
+.notice .message {
+	@include check;
+}
+.alert .message {
+	@include x;
+}
+
+.errors {
+	padding-top: 16px;
+	padding-bottom: 8px;
+	background: $dark;
+	border-left: 4px solid $alert;
+	color: $light;
+}
+.errors-title {
+	color: $alert;
+	font-size: 1.25em;
+	text-align: left;
+}
+.errors-title,
+.errors-list,
+.errors-description {
+	margin-left: 32px;
+	margin-bottom: 1em;
+}
+.errors-list {
+	list-style: none;
+}
+.errors-description {
+	@include x;
 }
 
 @mixin btn() {
@@ -146,6 +209,23 @@ input[type="password"] {
 	margin-bottom: 8px;
 	border-radius: 4px;
 	border: 1px solid $dark;
+}
+
+input[type="text"],
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="number"],
+input[type="range"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[type="password"] {
+	text-indent: 1em;
 }
 
 textarea:focus,

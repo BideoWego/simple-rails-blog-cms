@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title><%= site_name %></title>
-	  <%= stylesheet_link_tag    'public', media: 'all', 'data-turbolinks-track' => true %>
-	  <%= javascript_include_tag 'public', 'data-turbolinks-track' => true %>
-	  <%= csrf_meta_tags %>
+		<title><%= yield :title %></title>
+		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' %>
+		<%= yield :styles %>
+		<%= yield :scripts %>
 	</head>
 	<body>
 		<%= render :partial => 'shared/flash' %>
 		<div class="wrap">
-			<%= yield %>
+			<%= yield :content %>
 		</div>
 	</body>
 </html>

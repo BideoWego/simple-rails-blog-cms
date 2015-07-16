@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Admin Dashboard</title>
-		<%= stylesheet_link_tag('admin', :media => 'all') %>
-		<%= javascript_include_tag('admin') %>
-		<%= yield :javascript_includes %>
-		<script src="http://tinymce.cachefly.net/4.2/tinymce.min.js"></script>
-	</head>
-	<body>
-		<%= render :partial => 'shared/flash' %>
-		<div class="wrap">
-			<%= yield %>
-			<%= render :partial => 'access/back' %>
-		</div>
-	</body>
-</html>
+<% content_for :title do %>
+	Admin Dashboard
+<% end %>
+
+<% content_for :styles do %>
+	<%= stylesheet_link_tag('admin', :media => 'all') %>
+<% end %>
+
+<% content_for :scripts do %>
+	<%= javascript_include_tag('admin') %>
+	<%= yield :javascript_includes %>
+	<%= javascript_include_tag 'http://tinymce.cachefly.net/4.2/tinymce.min.js', 'data-turbolinks-track' => true %>
+<% end %>
+
+<% content_for :content do %>
+	<%= yield %>
+	<%= render :partial => 'access/back' %>
+<% end %>
+
+<%= render :template => 'layouts/application' %>

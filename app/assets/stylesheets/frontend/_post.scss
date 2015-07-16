@@ -18,9 +18,10 @@
 	margin-left: $margin-post-meta;
 }
 
+.post .excerpt p,
 .post .content p {
 	text-indent: 2em;
-	line-height: 1.25em;
+	line-height: 1.5;
 	margin-bottom: 8px;
 }
 
@@ -52,3 +53,30 @@
 .read-more a {
 	text-decoration: underline;
 }
+
+pre.prettyprint {
+	line-height: 1.15em;
+	padding: 16px;
+	border-radius: 4px;
+	border: 2px solid $dark;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	overflow: visible;
+	white-space: normal;
+}
+pre.prettyprint ol {
+	list-style: decimal;
+}
+pre.prettyprint ol li {
+	margin-left: 2em;
+}
+@mixin prettyprint-indent($max:100) {
+	$indent: '';
+	@for $i from 1 through $max {
+		$indent: $indent + "\00a0";
+		pre.prettyprint .indent-#{$i}:before {
+			content: "#{$indent}";
+		}
+	}
+}
+@include prettyprint-indent();

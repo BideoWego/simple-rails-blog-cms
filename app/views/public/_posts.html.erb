@@ -3,7 +3,7 @@
 		<% @posts.each do |i| %>
 			<div id="post-<%= i.id %>" class="post">
 				<h2 class="post-title">
-					<%= i.title %>
+					<%= link_to(i.title, "#post-#{i.id}") %>
 				</h2>
 				<h5 class="post-date">
 					Post on <%= i.created_at.strftime("%A %B %d, %Y") %>
@@ -12,13 +12,15 @@
 					By <%= i.author.name[:full] %>
 				</h5>
 				<div class="excerpt">
-					<%= i.excerpt.html_safe %>
+					<div class="excerpt-content">
+						<%= sanitize(i.excerpt).html_safe %>
+					</div>
 					<div class="read-more">
 						<%= link_to("Read more", "#post-#{i.id}") %>
 					</div>
 				</div>
 				<div class="content">
-					<%= i.content.html_safe %>
+					<%= sanitize(i.content).html_safe %>
 				</div>
 				<%= render :partial => 'comments', :locals => {:comments => i.comments, :post => i} %>
 			</div>
