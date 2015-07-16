@@ -1,11 +1,15 @@
 <% if ! flash[:notice].blank? %>
 	<div class="notice">
-		Notice: <%= flash[:notice] %>
+		<p class="message">
+			<%= flash[:notice] %>
+		</p>
 	</div>
 <% end %>
 
 <% if ! flash[:alert].blank? %>
 	<div class="alert">
-		Alert: <%= flash[:alert] %>
+		<p class="message">
+			<%= flash[:alert] %>
+		</p>
 	</div>
 <% end %>
