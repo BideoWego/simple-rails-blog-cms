@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta charset="UTF-8"/>
+
+		<meta name="twitter:card" content="Simple Blog CMS written in Ruby on Rails"/>
+		<meta name="twitter:site" content="@bideowego"/>
+		<meta name="twitter:creator" content="@bideowego"/>
+
+		<meta property="og:title" content="Simple Blog CMS by Bideo Wego"/>
+		<meta property="og:site_name" content="Simple Blog CMS"/>
+		<meta property="og:url" content="<%= root_url %>"/>
+		<meta property="og:description" content="A simple blog A simple blog cms with admin dashboard complete with TinyMCE for posts. Working features include: admin dashboard, crud, authors, posts, comments, display most recent posts, navigate posts by year, comment on posts as guest, code snippets in posts with syntax highlighting."/>
+		<meta property="og:image:width" content="1326"/>
+		<meta property="og:image:height" content="868"/>
+		<meta property="og:image" content="<%= root_url %>ograph.jpg"/>
+
 		<title><%= yield :title %></title>
 		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' %>
 		<%= yield :styles %>
