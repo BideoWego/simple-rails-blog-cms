@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150712045320) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "authors", force: :cascade do |t|
     t.string   "first",           limit: 50
     t.string   "last",            limit: 50
@@ -26,21 +23,21 @@ ActiveRecord::Schema.define(version: 20150712045320) do
     t.datetime "updated_at",                              null: false
   end
 
-  add_index "authors", ["username"], name: "index_authors_on_username", using: :btree
+  add_index "authors", ["username"], name: "index_authors_on_username"
 
   create_table "authors_comments", force: :cascade do |t|
     t.integer "author_id"
     t.integer "comment_id"
   end
 
-  add_index "authors_comments", ["author_id", "comment_id"], name: "index_authors_comments_on_author_id_and_comment_id", using: :btree
+  add_index "authors_comments", ["author_id", "comment_id"], name: "index_authors_comments_on_author_id_and_comment_id"
 
   create_table "authors_posts", force: :cascade do |t|
     t.integer "author_id"
     t.integer "post_id"
   end
 
-  add_index "authors_posts", ["author_id", "post_id"], name: "index_authors_posts_on_author_id_and_post_id", using: :btree
+  add_index "authors_posts", ["author_id", "post_id"], name: "index_authors_posts_on_author_id_and_post_id"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -50,15 +47,15 @@ ActiveRecord::Schema.define(version: 20150712045320) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id"
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
 
   create_table "comments_posts", force: :cascade do |t|
     t.integer "comment_id"
     t.integer "post_id"
   end
 
-  add_index "comments_posts", ["comment_id", "post_id"], name: "index_comments_posts_on_comment_id_and_post_id", using: :btree
+  add_index "comments_posts", ["comment_id", "post_id"], name: "index_comments_posts_on_comment_id_and_post_id"
 
   create_table "posts", force: :cascade do |t|
     t.integer  "author_id"
@@ -68,6 +65,6 @@ ActiveRecord::Schema.define(version: 20150712045320) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
+  add_index "posts", ["author_id"], name: "index_posts_on_author_id"
 
 end
