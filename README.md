@@ -36,3 +36,4 @@ Then run:
 	$ rails s
 
 View the project locally at `http://localhost:3000`
+
